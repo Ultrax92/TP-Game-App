@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { Alert, Button, StatusBar, StyleSheet, Text, View } from "react-native";
+import { Alert, Button, StatusBar, StyleSheet, Text, View, TouchableHighlight } from "react-native";
 export default function Game() {
     const [choice, setChoice] = useState("");
     const baseNumber = Math.floor(Math.random() * 100);
