@@ -23,7 +23,7 @@ export default function Game() {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" />
-            <Text style={baseNumber}>Starting: {baseNumber}</Text>
+            <Text style={styles.baseNumber}>Starting: {baseNumber}</Text>
             <TouchableHighlight onPress={() => setChoice('higher')} style={[styles.button, styles.buttonGreen]}>
                 <Text style={styles.buttonText}>Higher</Text>
             </TouchableHighlight>
