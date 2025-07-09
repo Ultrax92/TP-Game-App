@@ -16,7 +16,7 @@ export default function Game() {
             Alert.alert(`You've ${winner ? 'won' : 'lost'}`, `You scored: ${score}`);
             navigation.goBack();
         }
-    }, [baseNumber, score, choice]);
+    }, [baseNumber, score, choice])
 
     return (
         <View style={styles.container}>
