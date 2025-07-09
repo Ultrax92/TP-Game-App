@@ -1,71 +1,52 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { Alert, Button, StatusBar, StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { Alert, StatusBar, StyleSheet, Text, View } from "react-native";
+import AnimatedButton from "../components/AnimatedButton";
 export default function Game() {
-    const [choice, setChoice] = useState("");
-    const baseNumber = Math.floor(Math.random() * 100);
-    const score = Math.floor(Math.random() * 100);
+  const [choice, setChoice] = useState("");
+  const baseNumber = Math.floor(Math.random() * 100);
+  const score = Math.floor(Math.random() * 100);
 
-    const navigation = useNavigation();
-    useEffect(() => {
-        if (choice) {
-            const winner =
-                (choice === "higher" && score > baseNumber) ||
-                (choice === "lower" && baseNumber > score);
-            Alert.alert(`You've ${winner ? "won" : "lost"}`, `You scored: ${score}`);
-            navigation.goBack();
-            console.log(
-                ` base Number = ${baseNumber} et score = ${score}, le pari est ${winner}`
-            );
-        }
-    }, [baseNumber, score, choice, navigation]);
+  const navigation = useNavigation();
+  useEffect(() => {
+    if (choice) {
+      const winner =
+        (choice === "higher" && score > baseNumber) ||
+        (choice === "lower" && baseNumber > score);
+      Alert.alert(`You've ${winner ? "won" : "lost"}`, `You scored: ${score}`);
+      navigation.goBack();
+      console.log(
+        ` base Number = ${baseNumber} et score = ${score}, le pari est ${winner}`
+      );
+    }
+  }, [baseNumber, score, choice, navigation]);
 
-    return (
-        <View style={styles.container}>
-            <StatusBar barStyle="dark-content" />
-            <Text style={styles.baseNumber}>Starting: {baseNumber}</Text>
-            <TouchableHighlight onPress={() => setChoice('higher')} style={[styles.button, styles.buttonGreen]}>
-                <Text style={styles.buttonText}>Higher</Text>
-            </TouchableHighlight>
-            <TouchableHighlight onPress={() => setChoice('lower')} style={[styles.button, styles.buttonRed]}>
-                <Text style={styles.buttonText}>Higher</Text>
-            </TouchableHighlight>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" />
+      <Text style={styles.baseNumber}>Starting: {baseNumber}</Text>
+      <AnimatedButton
+        action="higher"
+        onPress={() => setChoice("higher")}
+      ></AnimatedButton>
+      <AnimatedButton
+        action="lower"
+        onPress={() => setChoice("higher")}
+      ></AnimatedButton>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#ffffff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-    baseNumber: {
-        fontSize: 48,
-        marginBottom: 30,
-    },
-
-    button: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 15,
-        padding: 30,
-        marginVertical: 15,
-    },
-
-    buttonRed: {
-        backgroundColor: 'red',
-    },
-
-    buttonGreen: {
-        backgroundColor: 'green',
-    },
-
-    buttonText: {
-        color: 'white',
-        fontSize: 24,
-    },
+  baseNumber: {
+    fontSize: 48,
+    marginBottom: 30,
+  },
 });
