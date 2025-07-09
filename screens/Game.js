@@ -18,7 +18,7 @@ export default function Game() {
         ` base Number = ${baseNumber} et score = ${score}, le pari est ${winner}`
       );
     }
-  }, [baseNumber, score, choice]);
+  }, [baseNumber, score, choice, navigation]);
 
   return (
     <View style={styles.container}>
