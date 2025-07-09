@@ -1,17 +1,20 @@
-import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
+import Home from './screens/Home';
+import Game from './screens/Game';
 
 export default function App() {
   return (
-    <SafeAreaView>
-      <Text>
-        Change code in the editor and watch it change on your phone! Save to get
-        a shareable url.
-      </Text>
-    </SafeAreaView>
+    <NavigationContainer>
+      <StatusBar style="auto" />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Game' component={Game} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

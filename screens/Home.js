@@ -1,11 +1,13 @@
-import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import React from 'react';
+import { StyleSheet, Button, View, StatusBar } from 'react-native';
 
 export default function Home() {
+    const navigation = useNavigation();
+
     return (
-        <View>
-            <StatusBar barStyle={"dark-content"} />
-            <Text>Home screen</Text>
+        <View style={styles.container}>
+            <StatusBar barStyle={'dark-content'} />
+            <Button onPress={() => navigation.navigate('Game')} title="Start game!" />
         </View>
     );
 }
