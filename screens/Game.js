@@ -4,8 +4,8 @@ import { Alert, StatusBar, StyleSheet, Text, View } from "react-native";
 import AnimatedButton from "../components/AnimatedButton";
 export default function Game() {
   const [choice, setChoice] = useState("");
-  const baseNumber = Math.floor(Math.random() * 100);
-  const score = Math.floor(Math.random() * 100);
+  const [baseNumber] = useState(() => Math.floor(Math.random() * 100));
+  const [score] = useState(() => Math.floor(Math.random() * 100));
 
   const navigation = useNavigation();
   useEffect(() => {
@@ -14,7 +14,11 @@ export default function Game() {
         (choice === "higher" && score > baseNumber) ||
         (choice === "lower" && baseNumber > score);
       Alert.alert(`You've ${winner ? "won" : "lost"}`, `You scored: ${score}`);
-      navigation.goBack();
+      navigation.navigate("Result", {
+        winner,
+        baseNumber,
+        score,
+      });
       console.log(
         ` base Number = ${baseNumber} et score = ${score}, le pari est ${winner}`
       );
@@ -31,7 +35,7 @@ export default function Game() {
       ></AnimatedButton>
       <AnimatedButton
         action="lower"
-        onPress={() => setChoice("higher")}
+        onPress={() => setChoice("lower")}
       ></AnimatedButton>
     </View>
   );
