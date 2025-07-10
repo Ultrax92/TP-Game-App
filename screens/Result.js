@@ -9,18 +9,19 @@ export default function Result() {
   return (
     <View style={styles.container}>
       <Text style={styles.message}>
-        You've
         {winner
-          ? ` won baseNumber was ${baseNumber} and score ${score}`
-          : ` lost baseNumber was ${baseNumber} and score ${score}`}
+          ? `GAGNÉ \nVotre numéro de base était ${baseNumber} et votre score ${score}`
+          : `PERDU \nVotre numéro de base était ${baseNumber} et votre score ${score}`}
       </Text>
-      {winner && (
-        <LottieView
-          autoPlay
-          style={{ width: 300, height: 300 }}
-          source={require("../assets/winner.json")}
-        />
-      )}
+      <LottieView
+        autoPlay
+        style={{ width: 300, height: 300 }}
+        source={
+          winner
+            ? require("../assets/winner.json")
+            : require("../assets/loser.json")
+        }
+      />
     </View>
   );
 }
@@ -31,5 +32,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  message: {
+    textAlign: "center",
+    fontSize: 16,
   },
 });

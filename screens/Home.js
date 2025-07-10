@@ -18,7 +18,7 @@ export default function Home() {
 
   function onTap(e) {
     if (e.nativeEvent.state === State.ACTIVE) {
-      Alert.alert("Long press to start the game");
+      Alert.alert("Rester appuyé pour démarrer le jeu");
     }
   }
 
@@ -32,7 +32,7 @@ export default function Home() {
             minDurationMs={600}
           >
             <View style={styles.button}>
-              <Text style={styles.buttonText}>Start game !</Text>
+              <Text style={styles.buttonText}>Démarrer</Text>
             </View>
           </LongPressGestureHandler>
         </TapGestureHandler>

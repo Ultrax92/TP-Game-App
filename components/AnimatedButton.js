@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Animated, StyleSheet, Text, TouchableHighlight } from "react-native";
 
-export default function AnimatedButton({ action, onPress }) {
+export default function AnimatedButton({ action, onPress, label }) {
   const opacity = useRef(new Animated.Value(1));
 
   return (
@@ -21,7 +21,7 @@ export default function AnimatedButton({ action, onPress }) {
           { opacity: opacity.current },
         ]}
       >
-        <Text style={styles.buttonText}>{action}</Text>
+        <Text style={styles.buttonText}>{label ?? action}</Text>
       </Animated.View>
     </TouchableHighlight>
   );
